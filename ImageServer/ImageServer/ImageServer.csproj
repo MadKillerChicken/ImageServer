@@ -43,10 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ImageEntry.cs" />
-    <Compile Include="ImageSubject.cs" />
-    <Compile Include="MediaEntry.cs" />
-    <Compile Include="MediaSubject.cs" />
+    <Compile Include="Models\ImageCategory.cs" />
+    <Compile Include="Models\ImageEntry.cs" />
+    <Compile Include="Models\ImageSet.cs" />
+    <Compile Include="Models\ImageSubject.cs" />
+    <Compile Include="Models\MediaCategory.cs" />
+    <Compile Include="Models\MediaEntry.cs" />
+    <Compile Include="Models\MediaSet.cs" />
+    <Compile Include="Models\MediaSubject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

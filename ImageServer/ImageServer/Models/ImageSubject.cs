@@ -1,4 +1,4 @@
-﻿namespace ImageServer
+﻿namespace ImageServer.Models
 {
     /// <summary>
     /// Subject displayed in an image
