@@ -5,7 +5,7 @@ namespace ImageServer.Models
 {
     internal abstract class MediaEntry
     {
-        public long Id { get; protected set; }
+        public string Id { get; protected set; }
 
         public string Name { get; protected set; }
 
