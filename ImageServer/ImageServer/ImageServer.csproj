@@ -33,7 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,19 +50,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\ImageCategory.cs" />
+    <Compile Include="EF\MediaCategoryConfigurations.cs" />
+    <Compile Include="EF\MediaEntryConfigurations.cs" />
+    <Compile Include="EF\MediaContext.cs" />
+    <Compile Include="EF\MediaDbInitializer.cs" />
+    <Compile Include="EF\MediaSetConfigurations.cs" />
+    <Compile Include="EF\MediaSubjectConfiguration.cs" />
+    <Compile Include="Models\ContainerEntry.cs" />
     <Compile Include="Models\ImageEntry.cs" />
     <Compile Include="Models\ImageSet.cs" />
-    <Compile Include="Models\ImageSubject.cs" />
     <Compile Include="Models\MediaCategory.cs" />
     <Compile Include="Models\MediaEntry.cs" />
     <Compile Include="Models\MediaSet.cs" />
     <Compile Include="Models\MediaSubject.cs" />
+    <Compile Include="Models\VideoEntry.cs" />
+    <Compile Include="Models\VideoSet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,10 +1,15 @@
-﻿namespace ImageServer.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ImageServer.Models
 {
     /// <summary>
     /// Basic main content of a media entry.
     /// </summary>
-    internal abstract class MediaSubject
+    [Table("Subjects")]
+    internal class MediaSubject
     {
+        [Key]
         public long Id { get; protected set; }
 
         public string Name { get; protected set; }

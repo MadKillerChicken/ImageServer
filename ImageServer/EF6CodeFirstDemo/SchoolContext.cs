@@ -6,7 +6,8 @@ namespace EF6CodeFirstDemo
     {
         public SchoolContext() : base("SchoolDB-EF6CodeFirst")
         {
-            Database.Connection.ConnectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=EFTest;Integrated Security=True";
+            // Database.Connection.ConnectionString = "Data Source=srv;Initial Catalog=EFTest;Integrated Security=True";
+            //Database.Connection.ConnectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=EFTest;Integrated Security=True";
             Database.SetInitializer<SchoolContext>(new SchoolDBInitializer());
         }
 

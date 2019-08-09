@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ImageServer.Models
 {
+    [Table("ImageEntries")]
     internal class ImageEntry : MediaEntry
     {
-        public override IEnumerable<MediaSubject> Subjects { get => throw new NotImplementedException(); protected set => throw new NotImplementedException(); }
-        public override IEnumerable<MediaCategory> Categories { get => throw new NotImplementedException(); protected set => throw new NotImplementedException(); }
+
     }
 }

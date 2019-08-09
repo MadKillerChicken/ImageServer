@@ -3,7 +3,7 @@ using System.Data.Entity;
 
 namespace EF6CodeFirstDemo
 {
-    public class SchoolDBInitializer : DropCreateDatabaseAlways<SchoolContext>
+    public class SchoolDBInitializer : CreateDatabaseIfNotExists<SchoolContext> //DropCreateDatabaseAlways
     {
         protected override void Seed(SchoolContext context)
         {

@@ -1,18 +1,23 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 
 namespace ImageServer.Models
 {
+
     internal abstract class MediaEntry
     {
-        public string Id { get; protected set; }
+        [Key]
+        public string Id { get; set; }
 
-        public string Name { get; protected set; }
+        public string Name { get; set; }
 
-        public abstract IEnumerable<MediaCategory> Categories { get; protected set; }
+        public IList<MediaCategory> Categories { get; protected set; }
 
-        public abstract IEnumerable<MediaSubject> Subjects { get; protected set; }
+        public IList<MediaSubject> Subjects { get; protected set; }
 
-        public FileInfo Location { get; protected set; } 
+        public string Location { get; set; }
+
+        public ContainerEntry Parent { get; set; }
     }
 }
