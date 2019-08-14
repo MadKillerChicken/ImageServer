@@ -33,10 +33,11 @@ namespace ImageServer.EF
                 .MapToStoredProcedures();*/
         }
 
-        public DbSet<MediaEntry> Entries { get; set; }
-        public DbSet<MediaSet> Sets { get; set; }
-        public DbSet<MediaCategory> Categories { get; set; }
-        public DbSet<MediaSubject> Subjects { get; set; }
+        public DbSet<BaseEntry> Entries { get; set; }
+        public DbSet<MediaEntry> MediaEntries { get; set; }
+        public DbSet<MediaEntrySet> MediaEntrySets { get; set; }
+        public DbSet<EntryCategory> Categories { get; set; }
+        public DbSet<EntrySubject> Subjects { get; set; }
 
     }
 }

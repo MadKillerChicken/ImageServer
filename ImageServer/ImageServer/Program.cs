@@ -16,22 +16,26 @@ namespace ImageServer
 
             using (var ctx = new MediaContext()) {
 
-                Console.WriteLine("Dirs:");
-                ctx.Entries
-                    .Where(e => e is ContainerEntry)
+                Console.WriteLine("Sets:");
+                ctx.MediaEntrySets
                     .ToList()
                     .ForEach(e => Console.WriteLine(e.Name));
 
                 Console.WriteLine();
+
                 Console.WriteLine("Entries:");
-                ctx.Entries
-                    .Where(e => !(e is ContainerEntry))
+                ctx.MediaEntries
                     .ToList()
                     .ForEach(e => Console.WriteLine(e.Name));
 
-                var asd = ctx.Entries.FirstOrDefault(e => e.Parent == null);
+                Console.WriteLine();
+
+                var testSet = ctx.MediaEntrySets.OrderBy(e => e.Name).Skip(1).FirstOrDefault();
+                Console.WriteLine("Test-Set-Children [" + testSet.Name + "]:");
+                testSet?.Children?.ToList().ForEach(e => Console.WriteLine(e.Name));
 
             }
+            Console.WriteLine();
             Console.WriteLine("Demo completed.");
             Console.ReadLine();
 

@@ -7,7 +7,7 @@ namespace ImageServer.Models
     /// Basic main content of a media entry.
     /// </summary>
     [Table("Subjects")]
-    internal class MediaSubject
+    internal class EntrySubject
     {
         [Key]
         public long Id { get; protected set; }

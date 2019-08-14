@@ -24,40 +24,44 @@ namespace ImageServer.EF
 
             context.Grades.AddRange(grades);*/
 
-            ReadFilesToEntries(context);
+            var result = 
+                ReadFilesystemToEntries(new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures)))
+                .ToList();
+
+            context.Entries.AddRange(result);
 
             base.Seed(context);
         }
 
-        private void ReadFilesToEntries(MediaContext ctx)
+        private IEnumerable<BaseEntry> ReadFilesystemToEntries(DirectoryInfo dir)
         {
-            DirectoryInfo dir = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures));
+            List<BaseEntry> results = new List<BaseEntry>();
             var fsEntries = dir.GetFileSystemInfos().ToList();
-            var parent = new ContainerEntry() {
+            var parent = new MediaEntrySet() {
                 Id = CreateMD5(dir.FullName),
                 Name = dir.Name,
                 Location = dir.FullName
             };
-            ctx.Entries.Add(parent);
+            results.Add(parent);
 
-            var dbEntries = fsEntries.ConvertAll(e =>
-                (Directory.Exists(e.FullName))
-                    ? (MediaEntry)new ContainerEntry() {
-                        Id = CreateMD5(e.FullName),
-                        Name = e.Name,
-                        Location = e.FullName,
-                        Parent = parent
-                    }
-                    : new ImageEntry() {
+            var dbEntries = fsEntries
+                .Where(e => !File.GetAttributes(e.FullName).HasFlag(FileAttributes.Directory))
+                .ToList()
+                .ConvertAll(e =>
+                    (BaseEntry)new ImageEntry() {
                         Id = CreateMD5(e.FullName),
                         Name = e.Name,
                         Location = e.FullName,
                         Parent = parent
                     });
 
-            ctx.Entries.AddRange(dbEntries);
-            parent.Entries = dbEntries;
+            parent.Children = dbEntries;
+            results.AddRange(dbEntries);
 
+            foreach (var fsDir in fsEntries.Where(e => File.GetAttributes(e.FullName).HasFlag(FileAttributes.Directory))) {
+                results.AddRange(ReadFilesystemToEntries(new DirectoryInfo(fsDir.FullName)));
+            }
+            return results;
         }
 
         public static string CreateMD5(string input)

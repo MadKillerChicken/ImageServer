@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace ImageServer.Models
 {
     [Table("MediaCategories")]
-    internal class MediaCategory
+    internal class EntryCategory
     {
         [Key]
         public long Id { get; protected set; }
@@ -16,6 +16,6 @@ namespace ImageServer.Models
 
         public IList<MediaEntry> Entries { get; protected set; }
 
-        public IList<MediaSubject> Subjects { get; protected set; }
+        public IList<EntrySubject> Subjects { get; protected set; }
     }
 }

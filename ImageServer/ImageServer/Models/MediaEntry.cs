@@ -4,20 +4,7 @@ using System.IO;
 
 namespace ImageServer.Models
 {
-
-    internal abstract class MediaEntry
+    internal abstract class MediaEntry : BaseEntry
     {
-        [Key]
-        public string Id { get; set; }
-
-        public string Name { get; set; }
-
-        public IList<MediaCategory> Categories { get; protected set; }
-
-        public IList<MediaSubject> Subjects { get; protected set; }
-
-        public string Location { get; set; }
-
-        public ContainerEntry Parent { get; set; }
     }
 }

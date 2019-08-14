@@ -3,7 +3,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace ImageServer.EF
 {
-    internal class MediaSubjectConfiguration : EntityTypeConfiguration<MediaSubject>
+    internal class MediaSubjectConfiguration : EntityTypeConfiguration<EntrySubject>
     {
         public MediaSubjectConfiguration()
         {

@@ -56,15 +56,13 @@
     <Compile Include="EF\MediaDbInitializer.cs" />
     <Compile Include="EF\MediaSetConfigurations.cs" />
     <Compile Include="EF\MediaSubjectConfiguration.cs" />
-    <Compile Include="Models\ContainerEntry.cs" />
+    <Compile Include="Models\BaseEntry.cs" />
+    <Compile Include="Models\EntryCategory.cs" />
+    <Compile Include="Models\EntrySubject.cs" />
     <Compile Include="Models\ImageEntry.cs" />
-    <Compile Include="Models\ImageSet.cs" />
-    <Compile Include="Models\MediaCategory.cs" />
     <Compile Include="Models\MediaEntry.cs" />
-    <Compile Include="Models\MediaSet.cs" />
-    <Compile Include="Models\MediaSubject.cs" />
+    <Compile Include="Models\MediaEntrySet.cs" />
     <Compile Include="Models\VideoEntry.cs" />
-    <Compile Include="Models\VideoSet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
