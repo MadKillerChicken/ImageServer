@@ -5,19 +5,18 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DC2A0833-E1B8-4E8F-8657-6308F20668A4}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>ImageServer</RootNamespace>
-    <AssemblyName>ImageServer</AssemblyName>
+    <ProjectGuid>{35D2A57D-6FF6-4F2D-AC3A-790A50FED694}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MediaHub</RootNamespace>
+    <AssemblyName>MediaHub</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -27,7 +26,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -45,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,18 +52,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="EF\CategoryConfigurations.cs" />
+    <Compile Include="EF\DirectoryItemConfigurations.cs" />
+    <Compile Include="EF\MediaContainerConfigurations.cs" />
+    <Compile Include="EF\MediaContext.cs" />
+    <Compile Include="EF\MediaDbInitializer.cs" />
+    <Compile Include="EF\FileSystemItemConfigurations.cs" />
+    <Compile Include="EF\SubjectConfiguration.cs" />
+    <Compile Include="EventArguments\MediaContainerEventArgs.cs" />
+    <Compile Include="MediaManager.cs" />
+    <Compile Include="MediaScanner.cs" />
+    <Compile Include="Models\DirectoryItem.cs" />
+    <Compile Include="Models\FileExtension.cs" />
+    <Compile Include="Models\FileTypes.cs" />
+    <Compile Include="Models\ImageItem.cs" />
+    <Compile Include="Models\ValuesEnumeration.cs" />
+    <Compile Include="Models\FileItem.cs" />
+    <Compile Include="Models\FileSystemItem.cs" />
+    <Compile Include="Models\Containers\FileSystemMediaContainer.cs" />
+    <Compile Include="Models\Containers\IMediaContainer.cs" />
+    <Compile Include="Models\Containers\MediaContainer.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\IDirectoryItem.cs" />
+    <Compile Include="Models\ISubject.cs" />
+    <Compile Include="Models\Subject.cs" />
+    <Compile Include="Models\IFileSystemItem.cs" />
+    <Compile Include="Models\ICategory.cs" />
+    <Compile Include="Models\VideoItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScannerQueueEntry.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MediaHub\MediaHub.csproj">
-      <Project>{35d2a57d-6ff6-4f2d-ac3a-790a50fed694}</Project>
-      <Name>MediaHub</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
